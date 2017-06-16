@@ -1,0 +1,1 @@
+[Fri Jun 16 11:34:24.981576 2017] [:error] [pid 13198] [client 127.0.0.1:43234] PHP Fatal error:  Uncaught Error: Class 'DB' not found in /var/www/php14.site/public_html/index.php:3\nStack trace:\n#0 {main}\n  thrown in /var/www/php14.site/public_html/index.php on line 3
