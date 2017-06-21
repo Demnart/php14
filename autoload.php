@@ -6,9 +6,9 @@ function __autoload($class)
     {
         require __DIR__ . '/classes/' . $class . '.php';
     }
-    else if(file_exists(__DIR__ . '/controllers/' . $class . 'php'))
+    else if(file_exists(__DIR__ . '/controllers/' . $class . '.php'))
     {
-        require __DIR__ . '/controllers/' . $class . 'php';
+        require __DIR__ . '/controllers/' . $class . '.php';
     }
     else if (file_exists(__DIR__ . '/models/' . $class . '.php'))
     {
