@@ -5,14 +5,10 @@ class NewsController
 
     public function actionAll()
     {
-        $test = new NewsModel();
-        $test->id = 3;
-        $test->delete();
-        die;/*
         $items = NewsModel::getAll();
         $view = new View();
         $view->items = $items;
-        $view->display('news/all.php');*/
+        $view->display('news/all.php');
     }
 
     public function actionOne()

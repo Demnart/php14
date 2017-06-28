@@ -70,4 +70,11 @@ abstract class AbstractModel
         $db->execute($sql, [':id'=>$this->data['id']]);
     }
 
+    public function update()
+    {
+      $sql = 'UPDATE ' . static::$table . ' SET title=:title, text=:text , author=:author WHERE id = :id';
+      $db = new DB();
+      $db->querry($sql,[':id'=>$this->data['id'],':title'=>$this->data['title'],':text'=>$this->data['text'],':author'=>$this->data['author']]);
+    }
+
 }
