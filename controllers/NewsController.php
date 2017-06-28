@@ -5,7 +5,9 @@ class NewsController
 
     public function actionAll()
     {
-
+        $test = new NewsModel();
+        $test->id = 3;
+        $test->delete();
         die;/*
         $items = NewsModel::getAll();
         $view = new View();
