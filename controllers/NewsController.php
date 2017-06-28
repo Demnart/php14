@@ -5,6 +5,13 @@ class NewsController
 
     public function actionAll()
     {
+        $test = new NewsModel();
+        $test->title = "Чтото";
+        $test->text = 'What';
+        $test->author ='hey';
+        $test->update();
+        die;
+
         $items = NewsModel::getAll();
         $view = new View();
         $view->items = $items;

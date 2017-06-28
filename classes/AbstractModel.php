@@ -22,12 +22,22 @@ abstract class AbstractModel
         return $this->data[$name];
     }
 
+    public function __isset($name)
+    {
+       return isset($this->data[$name]);
+    }
+
     public static function getOneByColumn($column,$value)
     {
         $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column .  '=:value';
         $db = new DB();
         $db->setClassName(get_called_class());
-        return $db->querry($sql,[':value' =>$value]);
+        $res = $db->querry($sql,[':value' =>$value]);
+        if (!empty($res))
+        {
+            return $res[0];
+        }
+        return false;
     }
 
     public static function getAll()
@@ -47,7 +57,7 @@ abstract class AbstractModel
         return $db->querry($sql,[':id'=>$id])[0];
     }
 
-    public function insert()
+    protected function insert()
     {
         $cols = array_keys($this->data);
         foreach ($cols as $col){
@@ -60,6 +70,7 @@ abstract class AbstractModel
       ';
         $db = new DB();
         $db->execute($sql,$data);
+        $this->id = $db->lastInsertId();
     }
 
     public function delete()
@@ -70,11 +81,34 @@ abstract class AbstractModel
         $db->execute($sql, [':id'=>$this->data['id']]);
     }
 
-    public function update()
+    protected function update()
     {
-      $sql = 'UPDATE ' . static::$table . ' SET title=:title, text=:text , author=:author WHERE id = :id';
+        $cols = [];
+        $data=[];
+        foreach ($this->data as $key=>$value)
+        {   $data[':'.$key] = $this->data[$value];
+            if ('id' == $key)
+            {
+                continue;
+            }
+            $cols[]=$key.'=:'.$key;
+        }
+      echo $sql = 'UPDATE ' . static::$table . ' SET ' . implode(',',$cols) . ' WHERE id = :id';
       $db = new DB();
-      $db->querry($sql,[':id'=>$this->data['id'],':title'=>$this->data['title'],':text'=>$this->data['text'],':author'=>$this->data['author']]);
+      $db->setClassName(get_called_class());
+      $db->querry($sql,$data);
+    }
+
+    public function save()
+    {
+        if (!isset($this->id))
+        {
+            $this->insert();
+        }
+        else
+        {
+            $this->update();
+        }
     }
 
 }
