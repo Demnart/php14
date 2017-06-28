@@ -6,7 +6,7 @@
  * Date: 19.06.17
  * Time: 16:41
  */
-abstract class Model
+abstract class AbstractModel
 {
 
     protected static $table;
@@ -20,6 +20,14 @@ abstract class Model
     public function __get($name)
     {
         return $this->data[$name];
+    }
+
+    public static function getOneByColumn($column,$value)
+    {
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column .  '=:value';
+        $db = new DB();
+        $db->setClassName(get_called_class());
+        return $db->querry($sql,[':value' =>$value]);
     }
 
     public static function getAll()
@@ -53,4 +61,6 @@ abstract class Model
         $db = new DB();
         $db->execute($sql,$data);
     }
+
+
 }

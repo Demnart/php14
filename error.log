@@ -13,3 +13,4 @@
 [Wed Jun 21 17:22:47.298098 2017] [:error] [pid 31419] [client 127.0.0.1:47600] PHP Notice:  Undefined index: col in /var/www/php14.site/public_html/classes/Model.php on line 48
 [Wed Jun 21 17:22:47.350523 2017] [:error] [pid 31419] [client 127.0.0.1:47600] PHP Notice:  Undefined index: col in /var/www/php14.site/public_html/classes/Model.php on line 48
 [Wed Jun 21 17:22:47.350553 2017] [:error] [pid 31419] [client 127.0.0.1:47600] PHP Notice:  Undefined index: col in /var/www/php14.site/public_html/classes/Model.php on line 48
+[Wed Jun 28 11:50:36.692421 2017] [:error] [pid 12136] [client 127.0.0.1:35470] PHP Warning:  Invalid argument supplied for foreach() in /var/www/php14.site/public_html/controllers/NewsController.php on line 9

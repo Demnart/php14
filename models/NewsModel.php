@@ -7,7 +7,7 @@
  * Time: 16:42
  */
 class NewsModel
-extends Model
+extends AbstractModel
 {
     protected static $table = 'news';
 
