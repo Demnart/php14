@@ -5,10 +5,17 @@ class NewsController
 
     public function actionAll()
     {
+        $article = new NewsModel();
+        $article->title = 'Hello';
+        $article->text = 'Hi';
+        $article->author = 'Artiom';
+        $article->insert();
+        /*
         $items = NewsModel::getAll();
         $view = new View();
         $view->items = $items;
         $view->display('news/all.php');
+        */
     }
 
     public function actionOne()

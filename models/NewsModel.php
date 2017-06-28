@@ -9,6 +9,7 @@
 class NewsModel
 extends Model
 {
-
     protected static $table = 'news';
+
+
 }
